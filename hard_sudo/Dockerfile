@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 #Install SSH Server
 RUN apt-get upgrade && apt-get update \
@@ -21,11 +21,11 @@ COPY .root.txt /root/root.txt
 RUN chmod 600 /root/root.txt
 
 # ----- Custom config
-RUN apt-get install --no-install-recommends -y python3 python2
+RUN apt-get install --no-install-recommends -y python3
 
 COPY sudoers /etc/sudoers
 COPY coolpython.py /home/aegis/coolpython.py
-RUN chmod 444 /home/aegis/coolpython.py
+RUN chown root /home/aegis/coolpython.py
 
 # PORTS AND BASIC COMMAND
 EXPOSE 22  
