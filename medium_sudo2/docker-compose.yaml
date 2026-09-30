@@ -1,0 +1,7 @@
+services:
+  ssh:
+    build:
+      context: .
+
+    ports:
+      - "22:22"
